@@ -15,7 +15,6 @@ services:
       context: ./nginx
     ports:
       - "3000:80"
-
   backend:
     build:
       dockerfile: Dockerfile.dev
@@ -24,6 +23,13 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: rlgns48126
+      MYSQL_DATABASE: myapp
+      MYSQL_PORT: 3306
+
   # mysql:
   #   build: ./mysql
   #   restart: unless-stopped

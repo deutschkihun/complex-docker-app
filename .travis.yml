@@ -25,3 +25,15 @@ after_success:
   - docker push deutschkihun/docker-frontend
   - docker push deutschkihun/docker-backend
   - docker push deutschkihun/docker-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "complex-docker-react-app"
+  env: "ComplexDockerReactApp-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-183248202880"
+  bucket_path: "complex-docker-react-app"
+  on:
+    branch: master
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_ACCESS_KEY
