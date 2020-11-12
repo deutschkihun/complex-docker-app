@@ -1,0 +1,27 @@
+#sudo: required
+
+os: linux
+
+language: generic
+
+dist: Bionic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t deutschkihun/complex-react-app -f ./frontend/Dockerfile.dev ./frontend
+
+script:
+  - docker run -e CI=true deutschkihun/complex-react-app npm run test -- --coverage
+
+after_success:
+  - docker build -t deutschkihun/docker-frontend ./frontend
+  - docker build -t deutschkihun/docker-backend ./backend
+  - docker build -t deutschkkhun/docker-nginx ./nginx
+
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+
+  - docker push deutschkihun/docker-frontend
+  - docker push deutschkihun/docker-backend
+  - docker push deutschkihun/docker-nginx
