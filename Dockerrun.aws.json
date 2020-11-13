@@ -15,7 +15,6 @@
             "essential": false,
             "memory": 128
         },
-
         {
             "name": "nginx",
             "image": "deutschkihun/docker-nginx",
