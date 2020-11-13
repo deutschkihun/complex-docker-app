@@ -18,7 +18,7 @@ script:
 after_success:
   - docker build -t deutschkihun/docker-frontend ./frontend
   - docker build -t deutschkihun/docker-backend ./backend
-  - docker build -t deutschkkhun/docker-nginx ./nginx
+  - docker build -t deutschkihun/docker-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
@@ -31,7 +31,7 @@ deploy:
   region: "eu-central-1"
   app: "complex-docker-react-app"
   env: "ComplexDockerReactApp-env"
-  bucket_name: "elasticbeanstalk-eu-central-1-183248202880"
+  bucket_name: elasticbeanstalk-eu-central-1-183248202880
   bucket_path: "complex-docker-react-app"
   on:
     branch: master
