@@ -29,7 +29,10 @@ make sure that your .travis.yml has correct AWS information
    - ENV CHOKIDAR_USEPOLLING=true is only for window os (mac doesn't need it)
 
 2. Dockerfile
-
    - stands for Dockerfile for production and deployment mode
    - First part(first from) is build stage and second part(second from) is run stage
-   - this mode is different from development mode so it needs nginx !!
+
+### Why we need Dockerrun.aws.json
+
+- This project has more than 1 Dockerfile which mean AWS doesn't know which file should be used for each area
+- Dockerrun.aws.json indicates the guidline for AWS elasticbeanstalk
