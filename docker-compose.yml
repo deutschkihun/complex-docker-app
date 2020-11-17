@@ -44,4 +44,3 @@ services:
   #   environment:
   #     MYSQL_ROOT_PASSWORD: rlgns48126
   #     MYSQL_DATABASE: myapp
-  # 이렇게 되면 mysql 폴더 자체가 작동하지 않는다
